@@ -2,5 +2,11 @@
 
 function acessar(){
     let loginEmail = document.getElementById('loginEmail').value;
-    let loginSenha = document.getElementById('logiSenha').value;
+    let loginSenha = document.getElementById('loginSenha').value;
+
+    if(!loginEmail || !loginSenha){
+        alert("Por favor preencher todos os campos");
+    }else{
+        alert("Campos preenchido com sucesso");
+    }
 }
