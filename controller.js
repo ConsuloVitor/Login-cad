@@ -36,3 +36,9 @@ function criaLista(){
         document.getElementById('tabela').innerHTML = tabela;
     }
 }
+
+// FUNÇÃO PARA EDITAR NOMES DE LISTA
+function editar(i){
+    document.getElementById('nomeUser').value = dadosLista[(i - 1)];
+    dadosLista.splice(dadosLista[(i - 1)], 1);
+}
