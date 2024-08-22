@@ -12,7 +12,9 @@
 <body>
     <div class="container">
         <label for="">Nome:</label>
-        <input type="text" id="nomeUser" class="form-control"><br>
+        <input type="text" id="nomeUser" class="form-control" placeholder="Digite seu nome"><br>
+        <label for="emailUser">E-mail:</label>
+        <input type="email" id="emailUser" class="form-control" placeholder="Digite seu e-mail">
         <button onclick="salvarUser()" type="button" class="btn btn-outline-secondary">SALVAR</button>
     </div>
 <br>
@@ -20,6 +22,7 @@
         <table class="table table-striped" id="tabela">
             <tr>
                 <th>Nome Usuário</th>
+                <th>E-mail</th>
                 <th>Ações</th>
             </tr>
         </table>
