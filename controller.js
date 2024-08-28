@@ -57,25 +57,29 @@ function acessar(){
     }
 }
 
-// FUNÇÃO QUE ARMAZENA NOME E EMAIL NA TELA DE CADASTRO
+// FUNÇÃO QUE ARMAZENA NOME E EMAIL E CPF NA TELA DE CADASTRO
 // O CÓDIGO ADICIONA UM NOME À LISTA E LIMPA O CAMPO SE O NOME NÃO ESTIVER VAZIO, CASO CONTRÁRIO, EXIBE UM ALERTA
 var dadosLista = [];
 function salvarUser() {
     let nomeUser = document.getElementById('nomeUser').value;
     let emailUser = document.getElementById('emailUser').value;
+    let cpfUser = document.getElementById('cpfUser').value;
  
-    if (nomeUser && emailUser) {
+    if (nomeUser && emailUser && cpfUser) {
         if(validarEmail(emailUser)) {
-        dadosLista.push({ nome: nomeUser, email: emailUser });
+        alert('Por favor, insira um e-mail válido.');
+    } else if (!validarCPF(cpfUser)) {
+        alert('Por favor, insira um CPF válido.');
+        } else {
+        dadosLista.push({ nome: nomeUser, email: emailUser, cpf: cpfUser });
         criarLista();
         document.getElementById('nomeUser').value = "";
         document.getElementById('emailUser').value = ""; 
-    } else {
-        alert('Por favor, insira um e-mail válido.');
-       } 
-    } else {
-        alert('Por favor, informe um nome e um e-mail para cadastro');
+        document.getElementById('cpfUser').value = ""; 
     }
+} else {
+        alert('Por favor, preencha todos os campos.');
+       } 
 }
 
 // FUNÇÃO PARA CRIAR LISTA DE USUÁRIOS
