@@ -29,12 +29,16 @@ function salvarUser() {
     let emailUser = document.getElementById('emailUser').value;
  
     if (nomeUser && emailUser) {
+        if(validarEmail(emailUser)) {
         dadosLista.push({ nome: nomeUser, email: emailUser });
         criarLista();
         document.getElementById('nomeUser').value = "";
         document.getElementById('emailUser').value = ""; 
     } else {
-        alert('Por favor, informe um nome e um e-mail para cadastro.');
+        alert('Por favor, insira um e-mail válido.');
+       } 
+    } else {
+        alert('Por favor, informe um nome e um e-mail para cadastro');
     }
 }
 
