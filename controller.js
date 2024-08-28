@@ -54,11 +54,11 @@ function criarLista() {
     document.getElementById('tabela').innerHTML = tabela;
 }
  
-// FUNÇÃO PARA EDITAR NOMES DE LISTA
-// O CÓDIGO ATUALIZA O CAMPO `NOMEUSER` COM O VALOR DO ITEM NA POSIÇÃO 'I-1' DO ARRAY `DADOSLISTA` E, EM SEGUIDA, TENTA REMOVER UM ITEM DE DADOSLISTA BASEADO NO VALOR DO ITEM NA POSIÇÃO 'I-1', O QUE PODE NÃO FUNCIONAR CORRETAMENTE.
+// FUNÇÃO PARA EDITAR NOME E EMAIL DE LISTA
+// O CÓDIGO ATUALIZA O CAMPO `NOMEUSER` E `EMAILUSER` COM O VALOR DO ITEM NA POSIÇÃO 'I-1' DO ARRAY `DADOSLISTA` E, EM SEGUIDA, TENTA REMOVER UM ITEM DE DADOSLISTA BASEADO NO VALOR DO ITEM NA POSIÇÃO 'I-1', O QUE PODE NÃO FUNCIONAR CORRETAMENTE.
 function editar(i) {
     document.getElementById('nomeUser').value = dadosLista[i].nome;
-    document.getElementById('EmailUser').value = dadosLista[i].email;
+    document.getElementById('emailUser').value = dadosLista[i].email;
     dadosLista.splice(i, 1); 
    criarLista(); 
 }
