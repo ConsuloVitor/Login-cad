@@ -106,9 +106,71 @@ function excluir(i) {
     criarLista(); 
 }
 ```
+
+## 6. Válidação de E-mail
+
+A função valida o campo do E-mail
+
+```
+function validarEmail(email) {
+    const padraoEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    return padraoEmail.test(email);
+}
+```
+
+## 7. Válidação de CPF
+
+A função valida o campo do CPF
+
+```
+function validarCPF(cpf) {
+    cpf = cpf.replace(/[^\d]+/g,''); // Remove caracteres não numéricos
+
+    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
+        return false; // Verifica se tem 11 dígitos e se todos os dígitos são iguais
+    }
+
+    let soma = 0;
+    let resto;
+
+    // Validação do primeiro dígito verificador
+    for (let i = 1; i <= 9; i++) {
+        soma += parseInt(cpf.charAt(i - 1)) * (11 - i);
+    }
+
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.charAt(9))) return false;
+
+    soma = 0;
+
+    // Validação do segundo dígito verificador
+    for (let i = 1; i <= 10; i++) {
+        soma += parseInt(cpf.charAt(i - 1)) * (12 - i);
+    }
+
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.charAt(10))) return false;
+
+    return true;
+}
+```
+
+
+
 <h2>Explicação:</h2>
 <h4>• Remove o usuário da lista.</h4>
 <h4>• Atualiza a tabela para remover a linha correspondente.</h4>
 
+<h1 align="center">Como Utilizar</h1>
 
+<h2 align="center">Tela de Login</h2>
+<h4>• Preencha os campos de e-mail, senha e CPF.</h4>
+<h4>• Clique no botão de login para verificar os dados e ser redirecionado para a tela de cadastro.</h4>
+
+<h2 align="center">Tela de Cadastro</h2>
+<h4>• Preencha os campos de nome, e-mail e CPF.</h4>
+<h4>• Clique no botão de salvar para adicionar o usuário à lista.</h4>
+<h4>• Utilize os botões de editar e excluir para gerenciar os dados na tabela.</h4>
 
