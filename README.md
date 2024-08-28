@@ -1,5 +1,5 @@
 <p align="center">
-  <img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=INCOMPLETO&color=yellow&style=for-the-badge"/>
+ <img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=COMPLETO&color=green&style=for-the-badge"/>
 </p>
 
 <h1 align="center">Validação de Acesso e Manipulação de Lista de Usuários</h1>
@@ -13,13 +13,18 @@
 A função `acessar()` valida se os campos de email e senha foram preenchidos na tela de login. Caso estejam preenchidos, o usuário é redirecionado para a página de cadastro. Se algum dos campos estiver vazio, um alerta é exibido.
 
 ```
-function acessar(){
+function acessar() {
     let loginEmail = document.getElementById('loginEmail').value;
     let loginSenha = document.getElementById('loginSenha').value;
+    let loginCPF = document.getElementById('loginCPF').value;
 
-    if(!loginEmail || !loginSenha){
-        alert("Por favor preencher todos os campos");
-    }else{
+    if (!loginEmail || !loginSenha || !loginCPF) {
+        alert("Por favor, preencha todos os campos");
+    } else if (!validarEmail(loginEmail)) {
+        alert("Por favor, insira um e-mail válido");
+    } else if (!validarCPF(loginCPF)) {
+        alert("Por favor, insira um CPF válido.");
+    } else {
         window.location.href = 'cadastro.html';
     }
 }
@@ -34,22 +39,30 @@ function acessar(){
 
 ## 2. Armazenamento de Usuários na Tela de Cadastro
 
-A função `salvarUser()` armazena os dados do usuário (nome e email) em uma lista quando ambos os campos são preenchidos corretamente. Após salvar, os campos de entrada são limpos.
+A função `salvarUser()` armazena os dados do usuário (nome, email e cpf) em uma lista quando ambos os campos são preenchidos corretamente. Após salvar, os campos de entrada são limpos.
 
 ```
 var dadosLista = [];
 function salvarUser() {
     let nomeUser = document.getElementById('nomeUser').value;
     let emailUser = document.getElementById('emailUser').value;
+    let cpfUser = document.getElementById('cpfUser').value;
 
-    if (nomeUser && emailUser) {
-        dadosLista.push({ nome: nomeUser, email: emailUser });
-        criarLista();
-        document.getElementById('nomeUser').value = "";
-        document.getElementById('emailUser').value = ""; 
+    if (nomeUser && emailUser && cpfUser) {
+        if (!validarEmail(emailUser)) {
+            alert('Por favor, insira um e-mail válido.');
+        } else if (!validarCPF(cpfUser)) {
+            alert('Por favor, insira um CPF válido.');
+        } else {
+            dadosLista.push({ nome: nomeUser, email: emailUser, cpf: cpfUser });
+            criarLista();
+            document.getElementById('nomeUser').value = "";
+            document.getElementById('emailUser').value = ""; 
+            document.getElementById('cpfUser').value = ""; 
+        }
     } else {
-        alert('Por favor, informe um nome e um e-mail para cadastro.');
-    }
+        alert('Por favor, preencha todos os campos.');
+    } 
 }
 ```
 
@@ -64,11 +77,11 @@ A função `criarLista()` atualiza a tabela HTML para exibir os usuários cadast
 
 ```
 function criarLista() {
-    let tabela = "<tr><th>Nome Usuario</th><th>Email</th><th>Ações</th></tr>";
+    let tabela = "<tr><th>Nome Usuário</th><th>Email</th><th>CPF</th><th>Ações</th></tr>";
     for (let i = 0; i < dadosLista.length; i++) {
-        tabela += "<tr><td>" + dadosLista[i].nome + "</td><td>" + dadosLista[i].email + "</td>" +
-                  "<td><button type='button' onclick='editar(" + i + ")'>Editar</button>" +
-                  "<button type='button' onclick='excluir(" + i + ")'>Excluir</button></td></tr>";
+        tabela += "<tr><td>" + dadosLista[i].nome + "</td><td>" + dadosLista[i].email + "</td><td>" + dadosLista[i].cpf + "</td>" +
+        "<td><button type='button' onclick='editar(" + i + ")'>Editar</button>" +
+        "<button type='button' onclick='excluir(" + i + ")'>Excluir</button></td></tr>";
     }
     document.getElementById('tabela').innerHTML = tabela;
 }
@@ -85,7 +98,8 @@ A função `editar(i)` permite que um usuário seja editado, preenchendo os camp
 ```
 function editar(i) {
     document.getElementById('nomeUser').value = dadosLista[i].nome;
-    document.getElementById('EmailUser').value = dadosLista[i].email;
+    document.getElementById('emailUser').value = dadosLista[i].email;
+    document.getElementById('cpfUser').value = dadosLista[i].cpf;
     dadosLista.splice(i, 1); 
     criarLista(); 
 }
