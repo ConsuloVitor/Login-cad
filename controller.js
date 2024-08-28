@@ -85,13 +85,13 @@ function salvarUser() {
 // FUNÇÃO PARA CRIAR LISTA DE USUÁRIOS
 // O CÓDIGO ATUALIZA O CONTEÚDO DA TABELA HTML PARA EXIBIR OS NOMES DA LISTA, ELE CRIA LINHAS PARA CADA NOME, ADICIONANDO "BOTÕES DE EDITAR E EXCLUIR"
 function criarLista() {
-    let tabela = "<tr><th>Nome Usuario</th><th>Email</th><th>Ações</th></tr>";
+    let tabela = "<tr><th>Nome Usuário</th><th>Email</th><th>CPF</th><th>Ações</th></tr>";
     for (let i = 0; i < dadosLista.length; i++) {
-        tabela += "<tr><td>" + dadosLista[i].nome + "</td><td>" + dadosLista[i].email + "</td>" +
-                  "<td><button type='button' onclick='editar(" + i + ")'>Editar</button>" +
-                  "<button type='button' onclick='excluir(" + i + ")'>Excluir</button></td></tr>";
+        tabela += "<tr><td>" + dadosLista[i].nome + "</td><td>" + dadosLista[i].email + "</td><td>" + dadosLista[i].cpf + "</td>" +
+        "<td><button type='button' onclick='editar(" + i + ")'>Editar</button>" +
+        "<button type='button' onclick='excluir(" + i + ")'>Excluir</button></td></tr>";
     }
-    document.getElementById('tabela').innerHTML = tabela;
+document.getElementById('tabela').innerHTML = tabela;
 }
  
 // FUNÇÃO PARA EDITAR NOME E EMAIL DE LISTA
