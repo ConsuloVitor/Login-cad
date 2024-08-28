@@ -44,16 +44,18 @@ function validarCPF(cpf) {
 function acessar(){
     let loginEmail = document.getElementById('loginEmail').value;
     let loginSenha = document.getElementById('loginSenha').value;
+    let loginCPF = document.getElementById('loginCPF').value;
 
-    if(!loginEmail || !loginSenha){
+    if(!loginEmail || !loginSenha || !loginCPF){
         alert("Por favor preencher todos os campos");
     } else if (!validarEmail(loginEmail)) {
-        // alert("Por favor, insira um e-mail válido");
-    } else {
+         alert("Por favor, insira um e-mail válido");
+    } else if (!validarCPF(loginCPF)) {
+         alert("Por favor, insira um CPF válido.");
+    } else{
         window.location.href = 'cadastro.html';
     }
 }
-
 
 // FUNÇÃO QUE ARMAZENA NOME E EMAIL NA TELA DE CADASTRO
 // O CÓDIGO ADICIONA UM NOME À LISTA E LIMPA O CAMPO SE O NOME NÃO ESTIVER VAZIO, CASO CONTRÁRIO, EXIBE UM ALERTA
