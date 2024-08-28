@@ -13,8 +13,9 @@ function acessar(){
 
     if(!loginEmail || !loginSenha){
         alert("Por favor preencher todos os campos");
-    }else{
-        // alert("Campos preenchido com sucesso");
+    } else if (!validarEmail(loginEmail)) {
+        // alert("Por favor, insira um e-mail válido");
+    } else {
         window.location.href = 'cadastro.html';
     }
 }
