@@ -1,3 +1,10 @@
+// FUNÇÃO QUE VALIDA O FORMATO DO EMAIL
+function validarEmail(email) {
+    // Expressão regular para validar o formato do email
+    const padraoEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    return padraoEmail.test(email);
+}
+
 // VALIDAR ACESSO TELA DE LOGIN
 // VALIDA SE OS CAMPOS FORAM PREENCHIDO E O REDIRECIONA PARA PAGINA CADASTRO, CASO AO CONTRARIO ENVIA UM ALERTA
 function acessar(){
