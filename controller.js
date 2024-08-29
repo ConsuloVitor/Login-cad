@@ -43,8 +43,7 @@ function validarCPF(cpf) {
 // VALIDA SE OS CAMPOS FORAM PREENCHIDOS E O REDIRECIONA PARA A PÁGINA DE CADASTRO, CASO CONTRÁRIO ENVIA UM ALERTA
 function acessar() {
     let loginEmail = document.getElementById('loginEmail').value;
-    let loginSenha = document.getElementById('loginSenha').value;
-   
+    let loginSenha = document.getElementById('loginSenha').value;   
 
     if (!loginEmail || !loginSenha) {
         alert("Por favor, preencha todos os campos");
