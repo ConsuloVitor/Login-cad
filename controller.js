@@ -44,14 +44,12 @@ function validarCPF(cpf) {
 function acessar() {
     let loginEmail = document.getElementById('loginEmail').value;
     let loginSenha = document.getElementById('loginSenha').value;
-    let loginCPF = document.getElementById('loginCPF').value;
+   
 
-    if (!loginEmail || !loginSenha || !loginCPF) {
+    if (!loginEmail || !loginSenha) {
         alert("Por favor, preencha todos os campos");
     } else if (!validarEmail(loginEmail)) {
         alert("Por favor, insira um e-mail válido");
-    } else if (!validarCPF(loginCPF)) {
-        alert("Por favor, insira um CPF válido.");
     } else {
         window.location.href = 'cadastro.html';
     }
