@@ -121,6 +121,10 @@ function excluir(i) {
 }
 ```
 
+<h2>Explicação:</h2>
+<h4>• Remove o usuário da lista.</h4>
+<h4>• Atualiza a tabela para remover a linha correspondente.</h4>
+
 ## 6. Válidação de E-mail
 
 A função valida o campo do E-mail
@@ -173,9 +177,7 @@ function validarCPF(cpf) {
 
 
 
-<h2>Explicação:</h2>
-<h4>• Remove o usuário da lista.</h4>
-<h4>• Atualiza a tabela para remover a linha correspondente.</h4>
+
 
 <h1 align="center">Como Utilizar</h1>
 
